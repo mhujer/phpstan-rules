@@ -9,5 +9,26 @@
 			"email": "mhujer@gmail.com"
 		}
 	],
-	"require": {}
+	"autoload": {
+		"psr-4": {
+			"Mhujer\\PHPStanRules\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"classmap": [
+			"vendor/phpstan/phpstan/tests/PHPStan",
+			"vendor/phpstan/phpstan/tests/TestCase.php",
+			"tests/Rules"
+		],
+		"psr-4": {
+			"Mhujer\\PHPStanRules\\": "tests/"
+		}
+	},
+	"require": {
+		"php": ">=7.1",
+		"phpstan/phpstan": "dev-master"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^6.2"
+	}
 }
