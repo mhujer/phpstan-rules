@@ -1,0 +1,13 @@
+{
+	"name": "mhujer/phpstan-rules",
+	"description": "Custom rules for phpstan",
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Martin Hujer",
+			"email": "mhujer@gmail.com"
+		}
+	],
+	"require": {}
+}
