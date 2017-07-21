@@ -1,12 +1,12 @@
 <?php
 declare(strict_types = 1);
 
-namespace Test;
+namespace Mhujer\PHPStanRules\Rules\ConstructorIsFirstMethodInClassRule;
 
-class ClassWithAnonymouseClassFromTrait
+class ClassWithTrait
 {
 
-	use Foo;
+	use FooBar;
 
 	public function __construct()
 	{
@@ -18,7 +18,7 @@ class ClassWithAnonymouseClassFromTrait
 
 }
 
-trait Foo
+trait FooBar
 {
 	abstract protected function mySpecialMethod(): string;
 }

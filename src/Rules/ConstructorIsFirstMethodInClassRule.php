@@ -6,7 +6,6 @@ namespace Mhujer\PHPStanRules\Rules;
 
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
-use PhpParser\Node\Stmt\ClassMethod;
 use PHPStan\Analyser\Scope;
 use PHPStan\Broker\Broker;
 
@@ -37,8 +36,13 @@ class ConstructorIsFirstMethodInClassRule implements \PHPStan\Rules\Rule
 	 */
 	public function processNode(Node $node, Scope $scope): array
 	{
-		$classMethods = $node->getMethods();
-		//d($classMethods);
+		if ($node->name === null) {
+			return []; // skip analysis of anonymous classes
+		}
+
+		$classReflection = $this->broker->getClass($scope->getNamespace() . '\\' . $node->name);
+
+		$classMethods = $classReflection->getNativeReflection()->getMethods();
 		if (count($classMethods) === 0) {
 			return [];
 		}
@@ -57,7 +61,7 @@ class ConstructorIsFirstMethodInClassRule implements \PHPStan\Rules\Rule
 						'__construct should be first method in the class "%s" (first method is "%s")',
 						$node->name,
 						$firstMethodName
-					)
+					),
 				];
 			}
 		}
