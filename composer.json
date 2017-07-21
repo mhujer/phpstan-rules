@@ -24,6 +24,9 @@
 			"Mhujer\\PHPStanRules\\": "tests/"
 		}
 	},
+	"config": {
+		"preferred-install": "source"
+	},
 	"require": {
 		"php": ">=7.1",
 		"phpstan/phpstan": "dev-master"
