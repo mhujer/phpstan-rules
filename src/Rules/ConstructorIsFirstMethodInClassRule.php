@@ -40,9 +40,7 @@ class ConstructorIsFirstMethodInClassRule implements \PHPStan\Rules\Rule
 			return []; // skip analysis of anonymous classes
 		}
 
-		$classReflection = $this->broker->getClass($scope->getNamespace() . '\\' . $node->name);
-
-		$classMethods = $classReflection->getNativeReflection()->getMethods();
+		$classMethods = $node->getMethods();
 		if (count($classMethods) === 0) {
 			return [];
 		}
