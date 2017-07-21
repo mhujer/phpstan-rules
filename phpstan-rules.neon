@@ -1,0 +1,5 @@
+services:
+  -
+    class: Mhujer\PHPStanRules\Rules\ConstructorIsFirstMethodInClassRule
+    tags:
+      - phpstan.rules.rule

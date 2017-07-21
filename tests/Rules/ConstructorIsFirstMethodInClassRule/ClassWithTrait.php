@@ -18,6 +18,21 @@ class ClassWithTrait
 
 }
 
+class ClassWithTraitAndIncorrectlySortedConstructor
+{
+
+	use FooBar;
+
+	protected function mySpecialMethod(): string
+	{
+	}
+
+	public function __construct()
+	{
+	}
+
+}
+
 trait FooBar
 {
 	abstract protected function mySpecialMethod(): string;

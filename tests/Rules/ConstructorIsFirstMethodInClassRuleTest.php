@@ -12,7 +12,12 @@ class ConstructorIsFirstMethodInClassRuleTest extends \PHPStan\Rules\AbstractRul
 		return new ConstructorIsFirstMethodInClassRule($this->createBroker());
 	}
 
-	public function testConstructorIsFirstMethodInClassRule()
+	public function testConstructorIsFirstMethodInClassRuleX()
+	{
+		$this->analyse([__DIR__ . '/ConstructorIsFirstMethodInClassRule/ClassWithConstructorAsFirstMethod.php'], []);
+	}
+
+	public function testConstructorIsSecondMethodIsError()
 	{
 		$this->analyse([__DIR__ . '/ConstructorIsFirstMethodInClassRule/ClassWithConstructorAsSecondMethod.php'], [
 			[
@@ -22,19 +27,19 @@ class ConstructorIsFirstMethodInClassRuleTest extends \PHPStan\Rules\AbstractRul
 		]);
 	}
 
-	public function testConstructorIsFirstMethodInClassRuleX()
-	{
-		$this->analyse([__DIR__ . '/ConstructorIsFirstMethodInClassRule/ClassWithConstructorAsFirstMethod.php'], []);
-	}
-
-	public function testConstructorIsFirstMethodInClassRuleXX()
+	public function testIncorrectlySortedConstructorInTheAnonymousClassIsIgnored()
 	{
 		$this->analyse([__DIR__ . '/ConstructorIsFirstMethodInClassRule/ClassWithAnonymousClass.php'], []);
 	}
 
-	public function testConstructorIsFirstMethodInClassRuleXXX()
+	public function testConstructorSortIsCheckedForClassesThatUseTraits()
 	{
-		$this->analyse([__DIR__ . '/ConstructorIsFirstMethodInClassRule/ClassWithTrait.php'], []);
+		$this->analyse([__DIR__ . '/ConstructorIsFirstMethodInClassRule/ClassWithTrait.php'], [
+			[
+				'__construct should be first method in the class "ClassWithTraitAndIncorrectlySortedConstructor" (first method is "mySpecialMethod")',
+				21,
+			],
+		]);
 	}
 
 	public function testConstructorIsFirstMethodInClassRuleXXXX()
