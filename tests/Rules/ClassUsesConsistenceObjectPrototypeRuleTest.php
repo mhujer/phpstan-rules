@@ -22,4 +22,28 @@ class ClassUsesConsistenceObjectPrototypeRuleTest extends \PHPStan\Rules\Abstrac
 		]);
 	}
 
+	public function testClassThatUsesObjectMixinTrait()
+	{
+		$this->analyse([__DIR__ . '/ClassUsesConsistenceObjectPrototypeRule/ClassWithTrait.php'], [
+			[
+				'Class should extend ObjectPrototype', // Bar class
+				13,
+			],
+		]);
+	}
+
+	public function testClassThatDoesNotUseObjectMixinTrait()
+	{
+		$this->analyse([__DIR__ . '/ClassUsesConsistenceObjectPrototypeRule/ClassWithoutTrait.php'], [
+			[
+				'Class should use Consistence\Type\ObjectMixinTrait',
+				6,
+			],
+			[
+				'Class should extend ObjectPrototype', // Bar class
+				11,
+			],
+		]);
+	}
+
 }
