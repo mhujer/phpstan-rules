@@ -3,3 +3,8 @@ services:
     class: Mhujer\PHPStanRules\Rules\ConstructorIsFirstMethodInClassRule
     tags:
       - phpstan.rules.rule
+
+  -
+    class: Mhujer\PHPStanRules\Rules\ClassUsesObjectPrototypeRule
+    tags:
+      - phpstan.rules.rule
