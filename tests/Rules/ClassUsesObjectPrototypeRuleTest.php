@@ -14,16 +14,12 @@ class ClassUsesObjectPrototypeRuleTest extends \PHPStan\Testing\RuleTestCase
 	{
 		$this->analyse([__DIR__ . '/data/class-uses-object-prototype.php'], [
 			[
-				'Class should extend ObjectPrototype',
+				'Class "ClassThatDoesNotExtendAnything" should extend \Consistence\ObjectPrototype',
 				8,
 			],
 			[
-				'Class should extend ObjectPrototype', // Bar class
-				14,
-			],
-			[
-				'Class should use Consistence\Type\ObjectMixinTrait',
-				25,
+				'Class FooClassThatDoesNotUseAnyTrait should use \Consistence\Type\ObjectMixinTrait',
+				20,
 			],
 		]);
 	}

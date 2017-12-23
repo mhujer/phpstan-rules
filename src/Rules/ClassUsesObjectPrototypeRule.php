@@ -35,27 +35,31 @@ class ClassUsesObjectPrototypeRule implements \PHPStan\Rules\Rule
 	 */
 	public function processNode(Node $node, Scope $scope): array
 	{
-		$className = $scope->getNamespace() . '\\' . $node->name;
+		$className = $node->name;
+		$fullyQualifiedClassName = $scope->getNamespace() . '\\' . $className;
 
 		// anonymous classes are not analyzed
-		if (!$this->broker->hasClass($className)) {
+		if (!$this->broker->hasClass($fullyQualifiedClassName)) {
 			return [];
 		}
 
-		$classReflection = $this->broker->getClass($className);
+		$classReflection = $this->broker->getClass($fullyQualifiedClassName);
 
 		$parentClass = $classReflection->getParentClass();
 		if ($parentClass === false) { // does not extend anything
 			return [
-				'Class should extend ObjectPrototype',
+				sprintf(
+					'Class "%s" should extend \Consistence\ObjectPrototype',
+					$className
+				),
 			];
 		}
 
 		if (!$classReflection->hasTraitUse(ObjectMixinTrait::class)) {
 			return [
 				sprintf(
-					'Class should use %s',
-					ObjectMixinTrait::class
+					'Class %s should use \Consistence\Type\ObjectMixinTrait',
+					$className
 				),
 			];
 		}

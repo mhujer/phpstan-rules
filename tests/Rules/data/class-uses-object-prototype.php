@@ -11,18 +11,13 @@ class ClassThatDoesNotExtendAnything
 }
 
 // class that extends something else and uses ObjectMixinTrait
-class Bar
+class FooClassUsesObjectMixinTrait extends ClassThatDoesNotExtendAnything
 {
-
-}
-
-class FooClassUsesObjectMixinTrait extends Bar
-{
-	use \Consistence\Type\ObjectMixinTrait;
+	use ObjectMixinTrait;
 }
 
 // class that extends something else, but does not use ObjectMixinTrait
-class FooClassThatDoesNotUseAnyTrait extends Bar
+class FooClassThatDoesNotUseAnyTrait extends ClassThatDoesNotExtendAnything
 {
 
 }
