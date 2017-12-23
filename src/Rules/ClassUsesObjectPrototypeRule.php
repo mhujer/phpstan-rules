@@ -36,6 +36,12 @@ class ClassUsesObjectPrototypeRule implements \PHPStan\Rules\Rule
 	public function processNode(Node $node, Scope $scope): array
 	{
 		$className = $scope->getNamespace() . '\\' . $node->name;
+
+		// anonymous classes are not analyzed
+		if (!$this->broker->hasClass($className)) {
+			return [];
+		}
+
 		$classReflection = $this->broker->getClass($className);
 
 		$parentClass = $classReflection->getParentClass();

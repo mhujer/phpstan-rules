@@ -2,6 +2,9 @@
 
 namespace ClassUsesObjectPrototype;
 
+use Consistence\ObjectPrototype;
+use Consistence\Type\ObjectMixinTrait;
+
 class ClassThatDoesNotExtendAnything
 {
 
@@ -22,4 +25,22 @@ class FooClassUsesObjectMixinTrait extends Bar
 class FooClassThatDoesNotUseAnyTrait extends Bar
 {
 
+}
+
+// Ok
+class ClassThatExtendsObjectPrototype extends ObjectPrototype
+{
+
+}
+
+// class with anonymous class is not analyzed
+class FooWithAnonymousClass extends ObjectPrototype
+{
+
+	public function getInst()
+	{
+		return new class
+		{
+		};
+	}
 }
