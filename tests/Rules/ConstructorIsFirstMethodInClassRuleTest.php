@@ -21,7 +21,7 @@ class ConstructorIsFirstMethodInClassRuleTest extends \PHPStan\Testing\RuleTestC
 	{
 		$this->analyse([__DIR__ . '/ConstructorIsFirstMethodInClassRule/ClassWithConstructorAsSecondMethod.php'], [
 			[
-				'__construct should be first method in the class (first method is "foo")',
+				'__construct() should be first method in the class (first method is "foo()")',
 				6,
 			],
 		]);
@@ -31,7 +31,7 @@ class ConstructorIsFirstMethodInClassRuleTest extends \PHPStan\Testing\RuleTestC
 	{
 		$this->analyse([__DIR__ . '/ConstructorIsFirstMethodInClassRule/ClassWithAnonymousClass.php'], [
 			[
-				'__construct should be first method in the class (first method is "mySpecialMethod")',
+				'__construct() should be first method in the class (first method is "mySpecialMethod()")',
 				10,
 			],
 		]);
@@ -41,7 +41,7 @@ class ConstructorIsFirstMethodInClassRuleTest extends \PHPStan\Testing\RuleTestC
 	{
 		$this->analyse([__DIR__ . '/ConstructorIsFirstMethodInClassRule/ClassWithTrait.php'], [
 			[
-				'__construct should be first method in the class (first method is "mySpecialMethod")',
+				'__construct() should be first method in the class (first method is "mySpecialMethod()")',
 				21,
 			],
 		]);
