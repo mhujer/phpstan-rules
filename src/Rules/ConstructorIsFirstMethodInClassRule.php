@@ -36,10 +36,6 @@ class ConstructorIsFirstMethodInClassRule implements \PHPStan\Rules\Rule
 	 */
 	public function processNode(Node $node, Scope $scope): array
 	{
-		if ($node->name === null) {
-			return []; // skip analysis of anonymous classes
-		}
-
 		$classMethods = $node->getMethods();
 		if (count($classMethods) === 0) {
 			return [];
@@ -56,8 +52,7 @@ class ConstructorIsFirstMethodInClassRule implements \PHPStan\Rules\Rule
 			if ($method->name === '__construct') {
 				return [
 					sprintf(
-						'__construct should be first method in the class "%s" (first method is "%s")',
-						$node->name,
+						'__construct should be first method in the class (first method is "%s")',
 						$firstMethodName
 					),
 				];
