@@ -9,3 +9,6 @@ before_script:
 
 script:
   - composer run ci
+
+after_script:
+  - php vendor/bin/coveralls -v

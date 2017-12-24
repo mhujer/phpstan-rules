@@ -1,6 +1,7 @@
 # Custom PHPStan Rules
 
 [![Build Status](https://travis-ci.org/mhujer/phpstan-rules.svg)](https://travis-ci.org/mhujer/phpstan-rules)
+[![Coverage Status](https://coveralls.io/repos/github/mhujer/phpstan-rules/badge.svg)](https://coveralls.io/github/mhujer/phpstan-rules)
 [![Latest Stable Version](https://poser.pugx.org/mhujer/phpstan-rules/v/stable)](https://packagist.org/packages/mhujer/phpstan-rules)
 [![License](https://poser.pugx.org/mhujer/phpstan-rules/license)](https://packagist.org/packages/mhujer/phpstan-rules)
 
