@@ -34,11 +34,11 @@ class ConstructorIsFirstMethodInClassRule implements \PHPStan\Rules\Rule
 				continue;
 			}
 
-			if ($method->name === '__construct') {
+			if ($method->name->toString() === '__construct') {
 				return [
 					sprintf(
 						'__construct() should be first method in the class (first method is "%s()")',
-						$firstMethodName
+						$firstMethodName->toString()
 					),
 				];
 			}
