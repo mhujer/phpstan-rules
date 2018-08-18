@@ -8,6 +8,7 @@
 This repository provides following custom rules for [PHPStan](https://github.com/phpstan/phpstan):
 
 * Check that the `__construct()` is the first method in the class.
+* If the `__construct` contains `Doctrine\ORM\EntityManagerInterface` as a parameter, it must be sorted as the last one.
 
 
 ## Usage
