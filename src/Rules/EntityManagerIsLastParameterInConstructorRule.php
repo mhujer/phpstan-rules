@@ -43,6 +43,14 @@ class EntityManagerIsLastParameterInConstructorRule implements \PHPStan\Rules\Ru
 		}
 
 		foreach ($params as $key => $param) {
+			if ($param->type === null) {
+				continue;
+			}
+
+			if ($param->type instanceof Node\UnionType) {
+				continue;
+			}
+
 			$typeName = $param->type instanceof NullableType
 				? (string) $param->type->type
 				: (string) $param->type;
