@@ -2,6 +2,9 @@
 
 namespace Mhujer\PHPStanRules\Rules;
 
+/**
+ * @extends \PHPStan\Testing\RuleTestCase<\Mhujer\PHPStanRules\Rules\EntityManagerIsLastParameterInConstructorRule>
+ */
 class EntityManagerIsLastParameterInConstructorRuleTest extends \PHPStan\Testing\RuleTestCase
 {
 

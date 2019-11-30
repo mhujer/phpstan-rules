@@ -8,6 +8,9 @@ use PhpParser\Node\NullableType;
 use PhpParser\Node\Stmt\ClassMethod;
 use PHPStan\Analyser\Scope;
 
+/**
+ * @implements \PHPStan\Rules\Rule<\PhpParser\Node\Stmt\ClassMethod>
+ */
 class EntityManagerIsLastParameterInConstructorRule implements \PHPStan\Rules\Rule
 {
 

@@ -6,6 +6,9 @@ use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use PHPStan\Analyser\Scope;
 
+/**
+ * @implements \PHPStan\Rules\Rule<\PhpParser\Node\Stmt\Class_>
+ */
 class ConstructorIsFirstMethodInClassRule implements \PHPStan\Rules\Rule
 {
 
