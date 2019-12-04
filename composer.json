@@ -17,8 +17,6 @@
 	"autoload-dev": {
 		"classmap": ["tests/"]
 	},
-	"minimum-stability": "dev",
-	"prefer-stable": true,
 	"require": {
 		"php": "^7.2",
 		"phpstan/phpstan": "^0.12"
