@@ -2,5 +2,5 @@ includes:
 	- rules.neon
 
 parameters:
-	excludes_analyse:
+	excludePaths:
 		- */tests/*/data/*

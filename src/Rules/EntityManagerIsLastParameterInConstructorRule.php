@@ -54,9 +54,13 @@ class EntityManagerIsLastParameterInConstructorRule implements \PHPStan\Rules\Ru
 				continue;
 			}
 
-			$typeName = $param->type instanceof NullableType
-				? (string) $param->type->type
-				: (string) $param->type;
+			if ($param->type instanceof NullableType) {
+				$typeName = (string) $param->type->type;
+			} elseif ($param->type instanceof Node\ComplexType) {
+				$typeName = (string) $param->type->getType();
+			} else {
+				$typeName = (string) $param->type;
+			}
 
 			if ($typeName !== 'Doctrine\ORM\EntityManagerInterface') {
 				continue;
